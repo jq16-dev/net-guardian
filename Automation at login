@@ -1,0 +1,47 @@
+NET GUARDIAN AUTOMATIC SETUP GUIDE
+==================================
+
+This guide explains how to run Net Guardian automatically when your Windows PC starts.
+
+1. **Download the repository**  
+   - Either clone the repository using Git or download the ZIP file and extract it to a folder, e.g., `C:\Net Guardian`.
+
+2. **Install Python**  
+   - Make sure Python (3.10 or above) is installed.  
+   - Add Python to your system PATH during installation.
+
+3. **Set up a virtual environment** (optional but recommended)  
+   - Open Command Prompt in the folder where you saved the project.  
+   - Run:  
+     ```
+     python -m venv env
+     env\Scripts\activate.bat
+     ```
+   - Install required packages:  
+     ```
+     pip install -r requirements.txt
+     ```
+
+4. **Prepare the BAT file for automatic startup**  
+   - The BAT file should point to the `.pyw` file in your project folder. Example content:  
+     ```
+     @echo off
+     cd "C:\Net Guardian"
+     start "" "C:\Net Guardian\net_guardian.pyw"
+     exit
+     ```
+   - Save this BAT file, e.g., as `run_net_guardian.bat`.
+
+5. **Enable automatic startup**  
+   - Press `Win + R`, type `shell:startup`, and press Enter.  
+   - Move the BAT file into the opened Startup folder.  
+   - This will run Net Guardian automatically every time you log in.
+
+6. **Testing**  
+   - Double-click the BAT file to make sure it runs correctly.  
+   - You should see console logs and hear a beep when the internet status changes.
+
+7. **Logs**  
+   - Internet checks and speed are logged in `internet_log.txt` in the same folder as the script.
+
+You’re all set. Net Guardian will now monitor your network automatically on login.
